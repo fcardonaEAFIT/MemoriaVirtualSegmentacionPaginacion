@@ -2,7 +2,7 @@ public class Segmento {
    private int inicio;
    private int limite;
    private static int tamSegmento;
-   private Pagina tablaPaginas[];
+   static private Pagina tablaPaginas[];
    
    public Segmento(int inicio, int limite) {
       this.inicio = inicio;
@@ -16,8 +16,9 @@ public class Segmento {
       if (dirSeg >= limite)
          throw new SegmentationFault("dir: " + dirSeg + "not found");
 
-      return tablaPaginas[Pagina.obtNroPag(dirSeg)].obtDirPag(dirSeg)
-         + inicio;
+      int lineal =  (inicio + dirSeg);
+
+      return tablaPaginas[Pagina.obtNroPagina(lineal)].obtDirPag(lineal);
    }
 
    public static int obtNroSeg(int dirLogica) {
